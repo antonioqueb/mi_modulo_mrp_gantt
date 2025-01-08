@@ -4,13 +4,14 @@ import { registry } from "@web/core/registry";
 import { AbstractAwaitableAction } from "@web/webclient/actions/abstract_awaitable_action";
 import { useService } from "@web/core/utils/hooks";
 
-class MrpDashboard extends AbstractAwaitableAction {
+export class MrpDashboard extends AbstractAwaitableAction {
     setup() {
         super.setup();
         this.actionService = useService("action");
     }
+
     async start() {
-        this.actionService.doAction('action_mrp_production_gantt');
+        await this.actionService.doAction('action_mrp_production_gantt');
     }
 }
 
