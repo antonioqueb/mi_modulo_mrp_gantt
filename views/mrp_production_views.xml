@@ -33,11 +33,22 @@
     <record id="action_mrp_production_gantt" model="ir.actions.act_window">
         <field name="name">Ordenes de Producción (Gantt)</field>
         <field name="res_model">mrp.production</field>
-        <field name="view_mode">gantt,gantt</field>
-         <field name="view_ids" eval="[(5, 0, 0),
-                                     (0, 0, {'view_mode': 'gantt', 'view_id': ref('view_mrp_production_gantt')}),
-                                     (0, 0, {'view_mode': 'gantt', 'view_id': ref('view_mrp_production_subgantt')})]"/>
+        <field name="view_mode">gantt</field>
+         <field name="view_id" ref="view_mrp_production_gantt"/>
     </record>
 
-    <menuitem id="menu_mrp_production_gantt" name="Órdenes de Producción (Gantt)" parent="mrp.menu_mrp_manufacturing" action="action_mrp_production_gantt" sequence="5"/>
+    <record id="action_mrp_production_subgantt" model="ir.actions.act_window">
+         <field name="name">Ordenes de Producción (Gantt) (Responsable)</field>
+         <field name="res_model">mrp.production</field>
+        <field name="view_mode">gantt</field>
+         <field name="view_id" ref="view_mrp_production_subgantt"/>
+    </record>
+
+     <record id="mrp_production_dashboard" model="ir.actions.client">
+        <field name="name">Dashboard Órdenes de Producción (Gantt)</field>
+        <field name="tag">mrp_production_dashboard</field>
+    </record>
+
+   <menuitem id="menu_mrp_production_gantt" name="Órdenes de Producción (Gantt)" parent="mrp.menu_mrp_manufacturing" action="mrp_production_dashboard" sequence="5"/>
+
 </odoo>
