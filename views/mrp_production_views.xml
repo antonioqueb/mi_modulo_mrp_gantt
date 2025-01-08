@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-         <record id="mrp_production_gantt_action" model="ir.actions.act_window">
-            <field name="name">Gantt de Producción</field>
-            <field name="res_model">mrp.production</field>
-            <field name="view_mode">gantt</field>
+        <!-- Gantt View Definition -->
+        <record id="mrp_production_gantt_view" model="ir.ui.view">
+            <field name="name">mrp.production.gantt</field>
+            <field name="model">mrp.production</field>
+            <field name="arch" type="xml">
+                <gantt string="Gantt de Producción"
+                       date_start="date_planned_start"
+                       date_stop="date_planned_finished"
+                       progress="progress"
+                    >
+
+                </gantt>
+            </field>
         </record>
 
-        <record id="mrp_production_gantt_dashboard_action" model="ir.actions.client">
+        <!-- Action Definition -->
+        <record id="mrp_production_gantt_action" model="ir.actions.act_window">
+            <field name="name">Gantt de Producción</field>
+            <field name="res_model">mrp.production</field>
+             <field name="view_mode">gantt</field>
+            <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'gantt', 'view_id': ref('mrp_production_gantt_view')})]"/>
+
+        </record>
+
+        <!-- Client Action Definition -->
+         <record id="mrp_production_gantt_dashboard_action" model="ir.actions.client">
             <field name="name">Gantt Dashboard de Producción</field>
             <field name="tag">mrp_gantt.mrp_gantt_dashboard</field>
         </record>
-
+        
+        <!-- Menu Items -->
         <menuitem id="mrp_gantt_menu"
                 name="Gantt MRP"
                 parent="mrp.menu_mrp_root"
                 sequence="3"
             />
 
-        <menuitem id="mrp_gantt_view_menu"
-                name="Gantt View"
-                parent="mrp_gantt_menu"
-                action="mrp_production_gantt_action"
-                sequence="1"
+         <menuitem id="mrp_gantt_view_menu"
+            name="Gantt View"
+            parent="mrp_gantt_menu"
+            action="mrp_production_gantt_action"
+            sequence="1"
             />
         <menuitem id="mrp_gantt_dashboard_view_menu"
-                name="Gantt Dashboard"
-                action="mrp_production_gantt_dashboard_action"
-                parent="mrp_gantt_menu"
-                sequence="2"
-            />
+            name="Gantt Dashboard"
+            action="mrp_production_gantt_dashboard_action"
+            parent="mrp_gantt_menu"
+            sequence="2"
+        />
     </data>
 </odoo>
