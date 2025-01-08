@@ -1,24 +1,19 @@
 {
-    'name': "MRP Gantt View",
-    'summary': """
-        Agrega una vista de Gantt a las órdenes de producción del módulo MRP.
-    """,
-    'description': """
-        Este módulo agrega una vista de Gantt a las órdenes de producción
-        del módulo MRP para una mejor visualización y gestión de la planificación.
-    """,
-    'author': "Alphaqueb Consulting SAS",
-    'website': "http://alphaqueb.com",
+    'name': 'MRP Gantt View',
+    'version': '1.0',
+    'summary': 'Custom Gantt View for MRP',
+    'description': 'This module adds a Gantt view to the MRP module.',
     'category': 'Manufacturing',
-    'version': '0.1',
+    'author': 'Your Name',
+    'website': 'yourwebsite.com',
     'depends': ['mrp', 'web'],
     'data': [
         'views/mrp_production_views.xml',
     ],
     'assets': {
-        'web.assets_backend': [
+         'web.assets_backend': [
             'mi_modulo_mrp_gantt/static/src/js/mrp_dashboard.js',
-            'mi_modulo_mrp_gantt/static/src/xml/mrp_dashboard.xml',
         ],
-    }
+    },
+    'license': 'LGPL-3',
 }
