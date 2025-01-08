@@ -13,6 +13,7 @@
     <t t-name="mrp_production_dashboard.GanttView">
       <div class="o_mrp_gantt_view">
          <t t-set="action" t-value="env.services.action.doAction('action_mrp_production_gantt')"/>
+          <!-- Asegúrate que la acción 'action_mrp_production_gantt' exista o este correctamente definida.-->
       </div>
    </t>
 </templates>

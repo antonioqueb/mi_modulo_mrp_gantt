@@ -1,54 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_mrp_production_gantt" model="ir.ui.view">
-        <field name="name">mrp.production.gantt</field>
-        <field name="model">mrp.production</field>
-        <field name="arch" type="xml">
-            <gantt date_start="date_start" date_stop="date_planned_finished"
-                   progress="progress"
-                   consolidation="task">
-                <field name="name" string="Orden de Producción"/>
-                <field name="product_id" string="Producto"/>
-                <field name="product_qty" string="Cantidad"/>
-                <field name="state" string="Estado" widget="badge" decoration-danger="state == 'cancel'" decoration-success="state == 'done'" decoration-info="state == 'progress'" decoration-warning="state == 'confirmed'"/>
-            </gantt>
-        </field>
-    </record>
+    <data>
+        <!-- Acción para el Dashboard del MRP -->
+        <record id="action_mrp_production_dashboard" model="ir.actions.client">
+            <field name="name">MRP Dashboard</field>
+            <field name="tag">mrp_production_dashboard</field>
+            <field name="target">current</field>
+        </record>
 
-    <record id="view_mrp_production_subgantt" model="ir.ui.view">
-        <field name="name">mrp.production.subgantt</field>
-        <field name="model">mrp.production</field>
-        <field name="arch" type="xml">
-            <gantt date_start="date_start" date_stop="date_planned_finished"
-                    progress="progress"
-                    consolidation="task">
-                <field name="name" string="Orden de Producción"/>
-                <field name="product_id" string="Producto"/>
-                <field name="product_qty" string="Cantidad"/>
-                <field name="state" string="Estado" widget="badge" decoration-danger="state == 'cancel'" decoration-success="state == 'done'" decoration-info="state == 'progress'" decoration-warning="state == 'confirmed'"/>
-                <field name="user_id" string="Responsable" options="{'no_open': True}"/>
-            </gantt>
-        </field>
-    </record>
+        <!-- Menú para el Dashboard del MRP -->
+        <menuitem id="menu_mrp_production_dashboard"
+                  name="MRP Dashboard"
+                  parent="mrp.menu_mrp_root"
+                  action="action_mrp_production_dashboard"
+                  sequence="10"/>
+        <!-- Acción para la vista Gantt-->
+        <record id="action_mrp_production_gantt" model="ir.actions.act_window">
+           <field name="name">Gantt de Órdenes de Producción</field>
+           <field name="res_model">mrp.production</field>
+           <field name="view_mode">gantt</field>
+           <field name="context">{'search_default_state': 'done'}</field>
+       </record>
 
-    <record id="action_mrp_production_gantt" model="ir.actions.act_window">
-        <field name="name">Ordenes de Producción (Gantt)</field>
-        <field name="res_model">mrp.production</field>
-        <field name="view_mode">gantt</field>
-         <field name="view_id" ref="view_mrp_production_gantt"/>
-    </record>
-
-    <record id="action_mrp_production_subgantt" model="ir.actions.act_window">
-         <field name="name">Ordenes de Producción (Gantt) (Responsable)</field>
-         <field name="res_model">mrp.production</field>
-        <field name="view_mode">gantt</field>
-         <field name="view_id" ref="view_mrp_production_subgantt"/>
-    </record>
-
-     <record id="mrp_production_dashboard" model="ir.actions.client">
-        <field name="name">Dashboard Órdenes de Producción (Gantt)</field>
-        <field name="tag">mrp_production_dashboard</field>
-    </record>
-
-   <menuitem id="menu_mrp_production_gantt" name="Órdenes de Producción (Gantt)" parent="mrp.menu_mrp_manufacturing" action="mrp_production_dashboard" sequence="5"/>
-
+    </data>
 </odoo>
