@@ -11,11 +11,11 @@
     'website': "http://alphaqueb.com",
     'category': 'Manufacturing',
     'version': '0.1',
-    'depends': ['mrp'],
+    'depends': ['mrp', 'web'],
     'data': [
         'views/mrp_production_views.xml',
     ],
-    'assets': {
+     'assets': {
         'web.assets_backend': [
             'mi_modulo_mrp_gantt/static/src/js/mrp_dashboard.js',
             'mi_modulo_mrp_gantt/static/src/xml/mrp_dashboard.xml',
