@@ -8,8 +8,24 @@
                    consolidation="task">
                 <field name="name" string="Orden de Producción"/>
                 <field name="product_id" string="Producto"/>
-                <field name="product_qty" string="Cantidad"/> 
+                <field name="product_qty" string="Cantidad"/>
                 <field name="state" string="Estado" widget="badge" decoration-danger="state == 'cancel'" decoration-success="state == 'done'" decoration-info="state == 'progress'" decoration-warning="state == 'confirmed'"/>
+            </gantt>
+        </field>
+    </record>
+
+    <record id="view_mrp_production_subgantt" model="ir.ui.view">
+        <field name="name">mrp.production.subgantt</field>
+        <field name="model">mrp.production</field>
+        <field name="arch" type="xml">
+            <gantt date_start="date_start" date_stop="date_planned_finished"
+                    progress="progress"
+                    consolidation="task">
+                <field name="name" string="Orden de Producción"/>
+                <field name="product_id" string="Producto"/>
+                <field name="product_qty" string="Cantidad"/>
+                <field name="state" string="Estado" widget="badge" decoration-danger="state == 'cancel'" decoration-success="state == 'done'" decoration-info="state == 'progress'" decoration-warning="state == 'confirmed'"/>
+                <field name="user_id" string="Responsable" options="{'no_open': True}"/>
             </gantt>
         </field>
     </record>
@@ -17,8 +33,10 @@
     <record id="action_mrp_production_gantt" model="ir.actions.act_window">
         <field name="name">Ordenes de Producción (Gantt)</field>
         <field name="res_model">mrp.production</field>
-        <field name="view_mode">gantt,tree</field>
-        <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'gantt', 'view_id': ref('view_mrp_production_gantt')}), (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_tree_view')})]"/>
+        <field name="view_mode">gantt,gantt</field>
+         <field name="view_ids" eval="[(5, 0, 0),
+                                     (0, 0, {'view_mode': 'gantt', 'view_id': ref('view_mrp_production_gantt')}),
+                                     (0, 0, {'view_mode': 'gantt', 'view_id': ref('view_mrp_production_subgantt')})]"/>
     </record>
 
     <menuitem id="menu_mrp_production_gantt" name="Órdenes de Producción (Gantt)" parent="mrp.menu_mrp_manufacturing" action="action_mrp_production_gantt" sequence="5"/>
