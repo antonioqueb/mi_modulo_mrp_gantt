@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mrp_production_gantt_read,access_mrp_production_gantt_read,123,444,1,0,0,0
-access_mrp_production_gantt_full,access_mrp_production_gantt_full,123,555,1,1,1,1
+access_mrp_production_gantt_read,access_mrp_production_gantt_read,ir.model,123,res.groups,444,1,0,0,0
+access_mrp_production_gantt_full,access_mrp_production_gantt_full,ir.model,123,res.groups,555,1,1,1,1
