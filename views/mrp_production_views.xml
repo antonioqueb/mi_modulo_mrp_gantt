@@ -9,7 +9,7 @@
             >
                 <field name="name" string="Orden de Producción"/>
                 <field name="product_id" string="Producto"/>
-                <field name="qty_production" string="Cantidad"/>
+                <field name="product_qty" string="Cantidad"/> <!-- Corregido: qty_production a product_qty -->
                 <field name="state" string="Estado" widget="badge" decoration-danger="state == 'cancel'" decoration-success="state == 'done'" decoration-info="state == 'progress'" decoration-warning="state == 'confirmed'"/>
             </gantt>
         </field>
