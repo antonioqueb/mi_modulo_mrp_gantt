@@ -1,20 +1,20 @@
-/** @odoo-module **/
+ /** @odoo-module **/
 
-import { registry } from "@web/core/registry";
-import { AbstractAwaitableAction } from "@web/webclient/actions/abstract_awaitable_action";
-import { useService } from "@web/core/utils/hooks";
+ import { registry } from "@web/core/registry";
+ import { AbstractAwaitableAction } from "@web/webclient/actions/abstract_awaitable_action";
+ import { useService } from "@web/core/utils/hooks";
 
-export class MrpDashboard extends AbstractAwaitableAction {
-    setup() {
-        super.setup();
-        this.actionService = useService("action");
-    }
+ export class MrpDashboard extends AbstractAwaitableAction {
+     setup() {
+         super.setup();
+         this.actionService = useService("action");
+     }
 
-    async start() {
-        await this.actionService.doAction('action_mrp_production_gantt');
-    }
-}
+     async start() {
+         await this.actionService.doAction('action_mrp_production_gantt');
+     }
+ }
 
-MrpDashboard.tag = "mrp_production_dashboard";
+ MrpDashboard.tag = "mrp_production_dashboard";
 
-registry.category("actions").add("mrp_production_dashboard", MrpDashboard);
+ registry.category("actions").add("mrp_production_dashboard", MrpDashboard);
