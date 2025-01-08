@@ -4,7 +4,7 @@
     'summary': 'Custom Gantt View for MRP',
     'description': 'This module adds a Gantt view to the MRP module.',
     'category': 'Manufacturing',
-    'author': 'Your Name',
+    'author': 'Alphaqueb Consulting SAS',
     'website': 'yourwebsite.com',
     'depends': ['mrp', 'web'],
     'data': [
