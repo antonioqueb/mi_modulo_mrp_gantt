@@ -8,7 +8,6 @@
     'website': 'yourwebsite.com',
     'depends': ['mrp', 'web'],
     'data': [
-        'security/ir.model.access.csv',
         'views/mrp_production_views.xml',
     ],
     'assets': {
