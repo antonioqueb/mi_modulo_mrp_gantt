@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<templates>
-   <t t-name="mi_modulo_mrp_gantt.MrpGanttDashboard">
-        <div class="gantt-container"/>
-    </t>
-
-</templates>
 
 <odoo>
+    <templates>
+       <t t-name="mi_modulo_mrp_gantt.MrpGanttDashboard">
+            <div class="gantt-container"/>
+        </t>
+
+    </templates>
+    
     <record id="mrp_production_gantt_action" model="ir.actions.act_window">
         <field name="name">Gantt de Producción</field>
         <field name="res_model">mrp.production</field>
         <field name="view_mode">gantt</field>
-          <field name="target">current</field>
     </record>
 
    <record id="mrp_production_gantt_dashboard_action" model="ir.actions.client">
