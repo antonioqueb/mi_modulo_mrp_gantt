@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="mrp_gantt_dashboard_template" name="MRP Gantt Dashboard Template">
+            <t t-name="mi_modulo_mrp_gantt.MrpGanttDashboard">
+                <div class="gantt-container"/>
+            </t>
+        </template>
+    </data>
+</odoo>

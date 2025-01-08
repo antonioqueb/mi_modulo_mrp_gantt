@@ -9,6 +9,7 @@
     'depends': ['mrp', 'web'],
     'data': [
         'views/mrp_production_views.xml',
+        'views/mrp_gantt_templates.xml',
     ],
     'assets': {
          'web.assets_backend': [
